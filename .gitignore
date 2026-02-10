@@ -43,7 +43,7 @@ Thumbs.db
 
 # Model files (pārāk lieli - izmanto Git LFS vai Railway Volumes)
 # Nokomentē ja izmanto Git LFS
-*.pth
+#*.pth
 *.pt
 *.ckpt
 *.model
