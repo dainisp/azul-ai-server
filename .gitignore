@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# PyCharm
+.idea/
+
+# VSCode
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Model files (pārāk lieli - izmanto Git LFS vai Railway Volumes)
+# Nokomentē ja izmanto Git LFS
+*.pth
+*.pt
+*.ckpt
+*.model
+
+# Test outputs
+test_output/
+
+# Local config
+.env
+.env.local
+
+# Railway
+.railway/

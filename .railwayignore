@@ -1,0 +1,55 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test files
+test_*.py
+*_test.py
+tests/
+
+# Examples (optional - komentē ja gribi lai ir deployā)
+# azul_client_example.py
+# azul_play_example.py
+# test_server.py
+
+# Training files (liels fails!)
+azul_train.py
+
+# Local models (ja ir lieli)
+# azul_best_model.pth
+# azul_final_model.pth
+
+# Documentation (neobligāti)
+*.md
+!README.md
+
+# Setup scripts
+setup.sh
+setup.bat
+
+# Docker files
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Git
+.git/
+.gitignore
