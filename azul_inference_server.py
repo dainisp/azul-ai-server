@@ -92,30 +92,35 @@ class AzulInferenceEngine:
     def action_to_index(self, action: Tuple) -> int:
         """Konvertē darbību uz indeksu"""
         color, row, source_idx,action_type  = action
-        
+        row_encoded = 5 if row == -1 else row
         if action_type == 'pass':
-            return 180
+            return 0
         elif action_type == 'factory':
             # Factory actions: 0-149 (5 factories × 5 colors × 6 rows)
-            return source_idx * 30 + color * 6 + row
+            return 1 + source_idx * 30 + color * 6 + row_encoded
         else:  # center
             # Center actions: 150-179 (5 colors × 6 rows)
-            return 150 + color * 6 + row
+            return 151 + color * 6 + row_encoded
     
     def index_to_action(self, idx: int) -> Tuple:
         """Konvertē indeksu uz darbību"""
-        if idx == 180:
+        if idx == 0:
             return (0,0,0,'pass')
-        elif idx < 150:
-            factory_idx = idx // 30
-            remainder = idx % 30
+        elif idx <= 150:
+
+            factory_idx = (idx-1) // 30
+            remainder = (idx -1) % 30
             color = remainder // 6
-            row = remainder % 6
+            row = remainder % 6 
+            if row == 5:
+                row = -1
             return ( color, row,factory_idx,'factory')
         else:
-            idx -= 150
+            idx -= 151
             color = idx // 6
             row = idx % 6
+            if row == 6:
+                row = -1
             return (  color, row,0,'center')
     
     def predict(self, state: np.ndarray, valid_actions: List[Tuple], 
@@ -131,7 +136,8 @@ class AzulInferenceEngine:
         Returns:
             Labākā darbība
         """
-        if np.random.random() < epsilon:
+        if  np.random.random() < epsilon:
+            logger.info(f"fucking epsilon{epsilon}")
             return np.random.choice(len(valid_actions))
         
         with torch.no_grad():
