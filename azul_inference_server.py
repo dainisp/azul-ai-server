@@ -119,7 +119,7 @@ class AzulInferenceEngine:
             idx -= 151
             color = idx // 6
             row = idx % 6
-            if row == 6:
+            if row == 5:
                 row = -1
             return (  color, row,0,'center')
     
